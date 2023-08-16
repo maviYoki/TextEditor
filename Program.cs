@@ -26,9 +26,15 @@ internal class Program
             return;
         }
 
-        Console.WriteLine(input);
+        var option = int.Parse(input);
 
-
+        switch(option)
+        {
+            case 0: Console.WriteLine("Exit..."); break;
+            case 1: Console.WriteLine("Open file..");OpenFile(); break;
+            case 2: Console.WriteLine("Create new file..");NewFile(); break;
+            default: Menu(); break;
+        }
 
     }
 }
