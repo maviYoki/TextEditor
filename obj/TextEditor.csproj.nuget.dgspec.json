@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\maria\\TextEditor\\TextEditor.csproj": {}
+    "C:\\Users\\maria\\TextEditor\\TextEditor.csproj": {}
   },
   "projects": {
-    "c:\\Users\\maria\\TextEditor\\TextEditor.csproj": {
+    "C:\\Users\\maria\\TextEditor\\TextEditor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\maria\\TextEditor\\TextEditor.csproj",
+        "projectUniqueName": "C:\\Users\\maria\\TextEditor\\TextEditor.csproj",
         "projectName": "TextEditor",
-        "projectPath": "c:\\Users\\maria\\TextEditor\\TextEditor.csproj",
+        "projectPath": "C:\\Users\\maria\\TextEditor\\TextEditor.csproj",
         "packagesPath": "C:\\Users\\maria\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\maria\\TextEditor\\obj\\",
+        "outputPath": "C:\\Users\\maria\\TextEditor\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\maria\\AppData\\Roaming\\NuGet\\NuGet.Config",
