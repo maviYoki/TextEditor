@@ -37,4 +37,14 @@ internal class Program
         }
 
     }
+
+    static void OpenFile()
+    {
+
+    }
+
+    static void NewFile() 
+    {
+
+    }
 }
