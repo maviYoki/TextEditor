@@ -57,26 +57,39 @@ internal class Program
         Console.WriteLine("----------------------------------");
         Console.WriteLine(" ");
 
-        var newString = "";
+        var text = "";
 
         do
         {
             var textInput = Console.ReadLine();
-            newString += textInput;
-            newString += Environment.NewLine;
+            text += textInput;
+            text += Environment.NewLine;
         }
         while (Console.ReadKey(true).Key != ConsoleKey.Escape);
         Console.WriteLine("-------------------------------------------");
         Console.WriteLine(" ");
         
         Console.WriteLine("Your new text file:");
-        Console.WriteLine(newString);
+        Console.WriteLine(text);
         
         Console.WriteLine(" ");
 
-        Console.WriteLine("Returning to the Menu...");
-        Thread.Sleep(3000);
+        Salve(text);
 
-        Menu();
     }
+
+    static void Salve(string text) 
+    {
+        Console.WriteLine("do you Which way salve?");
+        var path = Console.ReadLine();
+
+        using (var file = new StreamWriter(path)) 
+        {
+            file.WriteLine(text);
+            Console.WriteLine(" ");
+            Console.WriteLine("Successfully saved file...");    
+        }
+    }
+
+
 }
