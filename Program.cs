@@ -3,7 +3,8 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Menu();
+        Stopwatch(ReturningMenuText());
+
     }
 
     static void Menu()
@@ -78,17 +79,44 @@ internal class Program
 
     }
 
-    static void Salve(string text) 
+    static void Saved(string text) 
     {
         Console.WriteLine("do you Which way salve?");
         var path = Console.ReadLine();
-
-        using (var file = new StreamWriter(path)) 
+        try
         {
-            file.WriteLine(text);
-            Console.WriteLine(" ");
-            Console.WriteLine("Successfully saved file...");    
+            using (var file = new StreamWriter(path))
+            {
+                file.WriteLine(text);
+                Console.WriteLine(" ");
+                Console.WriteLine("Successfully saved file...");
+            }
+
+            Stopwatch(ReturningMenuText());
         }
+        catch
+        {
+            Console.WriteLine("Invalid input.");
+            Stopwatch(ReturningMenuText());
+            Menu();
+        }
+    }
+
+    static void Stopwatch(string text)
+    {
+        for (int i = 3; i > 0; i--) 
+        {
+            Console.Clear();
+
+            Console.WriteLine($"{text}{i}");
+            Thread.Sleep(1000);
+        }
+        Menu();
+    }
+
+    static string ReturningMenuText()
+    {
+        return "Retorning to the menu in...";
     }
 
 
