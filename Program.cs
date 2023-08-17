@@ -8,6 +8,8 @@ internal class Program
 
     static void Menu()
     {
+        Console.Clear();
+
         Console.WriteLine("What do you want to do?");
         Console.WriteLine("0- Exit");
         Console.WriteLine("1- Open file");
@@ -55,21 +57,26 @@ internal class Program
         Console.WriteLine("----------------------------------");
         Console.WriteLine(" ");
 
-        var textInput = "";
+        var newString = "";
 
         do
         {
-            textInput += Console.ReadLine();
+            var textInput = Console.ReadLine();
+            newString += textInput;
+            newString += Environment.NewLine;
+        }
+        while (Console.ReadKey(true).Key != ConsoleKey.Escape);
+        Console.WriteLine("-------------------------------------------");
+        Console.WriteLine(" ");
+        
+        Console.WriteLine("Your new text file:");
+        Console.WriteLine(newString);
+        
+        Console.WriteLine(" ");
 
-            if (string.IsNullOrEmpty(textInput))
-            {
+        Console.WriteLine("Returning to the Menu...");
+        Thread.Sleep(3000);
 
-                Console.WriteLine("Inavelid input!!");
-                return;
-            }
-
-        } while (Console.ReadKey().Key != ConsoleKey.Escape);
-
-        Console.WriteLine(textInput);
+        Menu();
     }
 }
