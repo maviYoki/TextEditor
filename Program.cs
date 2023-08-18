@@ -3,8 +3,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Stopwatch(ReturningMenuText());
-
+        OpenFile();
     }
 
     static void Menu()
@@ -48,6 +47,29 @@ internal class Program
 
     static void OpenFile()
     {
+        Console.WriteLine("Enter the path to the file you want to access:");
+        var path = Console.ReadLine();
+
+
+        if (string.IsNullOrEmpty(path))
+        {
+            Console.WriteLine("Invalid input");
+            Stopwatch(ReturningMenuText());
+            Menu();
+            return;
+        }
+
+        using (var file = new StreamReader(path))
+        {
+            Console.WriteLine(file.ReadToEnd());
+        }
+
+        Console.WriteLine("'ENTER' press to continue to the menu");
+        if (Console.ReadKey().Key == ConsoleKey.Enter)
+        {
+            Stopwatch(ReturningMenuText());
+            Menu();
+        }
     }
 
     static void NewFile()
@@ -69,17 +91,17 @@ internal class Program
         while (Console.ReadKey(true).Key != ConsoleKey.Escape);
         Console.WriteLine("-------------------------------------------");
         Console.WriteLine(" ");
-        
+
         Console.WriteLine("Your new text file:");
         Console.WriteLine(text);
-        
+
         Console.WriteLine(" ");
 
         Saved(text);
 
     }
 
-    static void Saved(string text) 
+    static void Saved(string text)
     {
         Console.WriteLine("do you Which way salve?");
         var path = Console.ReadLine();
@@ -104,7 +126,7 @@ internal class Program
 
     static void Stopwatch(string text)
     {
-        for (int i = 3; i > 0; i--) 
+        for (int i = 3; i > 0; i--)
         {
             Console.Clear();
 
