@@ -3,7 +3,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        OpenFile();
+        Menu();
     }
 
     static void Menu()
@@ -105,8 +105,14 @@ internal class Program
     {
         Console.WriteLine("do you Which way salve?");
         var path = Console.ReadLine();
-        try
+      
+        if (string.IsNullOrEmpty(path)) 
         {
+            Console.WriteLine("Invalid input");
+            Stopwatch(ReturningMenuText());
+            Menu();
+            return;
+        }
             using (var file = new StreamWriter(path))
             {
                 file.WriteLine(text);
@@ -115,13 +121,8 @@ internal class Program
             }
 
             Stopwatch(ReturningMenuText());
-        }
-        catch
-        {
-            Console.WriteLine("Invalid input.");
-            Stopwatch(ReturningMenuText());
-            Menu();
-        }
+      
+        
     }
 
     static void Stopwatch(string text)
