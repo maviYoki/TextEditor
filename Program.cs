@@ -54,7 +54,7 @@ internal class Program
         if (string.IsNullOrEmpty(path))
         {
             Console.WriteLine("Invalid input");
-            Stopwatch(ReturningMenuText());
+            ReturningMenu(ReturningMenuText());
             Menu();
             return;
         }
@@ -67,7 +67,7 @@ internal class Program
         Console.WriteLine("'ENTER' press to continue to the menu");
         if (Console.ReadKey().Key == ConsoleKey.Enter)
         {
-            Stopwatch(ReturningMenuText());
+            ReturningMenu(ReturningMenuText());
             Menu();
         }
     }
@@ -109,7 +109,7 @@ internal class Program
         if (string.IsNullOrEmpty(path)) 
         {
             Console.WriteLine("Invalid input");
-            Stopwatch(ReturningMenuText());
+            ReturningMenu(ReturningMenuText());
             Menu();
             return;
         }
@@ -120,12 +120,12 @@ internal class Program
                 Console.WriteLine("Successfully saved file...");
             }
 
-            Stopwatch(ReturningMenuText());
+            ReturningMenu(ReturningMenuText());
       
         
     }
 
-    static void Stopwatch(string text)
+    static void ReturningMenu(string text)
     {
         for (int i = 3; i > 0; i--)
         {
