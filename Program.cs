@@ -20,6 +20,8 @@ internal class Program
         if (string.IsNullOrEmpty(input))
         {
             Console.WriteLine("Input invalid");
+            Thread.Sleep(1500);
+            Menu();
             return;
         }
 
@@ -110,7 +112,6 @@ internal class Program
         {
             Console.WriteLine("Invalid input");
             ReturningMenu(ReturningMenuText());
-            Menu();
             return;
         }
             using (var file = new StreamWriter(path))
@@ -118,6 +119,7 @@ internal class Program
                 file.WriteLine(text);
                 Console.WriteLine(" ");
                 Console.WriteLine("Successfully saved file...");
+                Thread.Sleep(1500);
             }
 
             ReturningMenu(ReturningMenuText());
