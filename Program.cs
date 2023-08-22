@@ -1,6 +1,7 @@
 ﻿
 internal class Program
 {
+
     private static void Main(string[] args)
     {
         Menu();
@@ -30,14 +31,14 @@ internal class Program
         switch (option)
         {
             case 0:
-                Console.WriteLine("Exit...");
+                Console.WriteLine("\nExit...");
                 break;
             case 1:
-                Console.WriteLine("Open file..");
+                Console.WriteLine("\nOpen file..");
                 OpenFile();
                 break;
             case 2:
-                Console.WriteLine("Create new file..");
+                Console.WriteLine("\nCreate new file..");
                 NewFile();
                 break;
             default:
@@ -49,13 +50,13 @@ internal class Program
 
     static void OpenFile()
     {
-        Console.WriteLine("Enter the path to the file you want to access:");
+        Console.WriteLine("\nEnter the path to the file you want to access:");
         var path = Console.ReadLine();
 
 
         if (string.IsNullOrEmpty(path))
         {
-            Console.WriteLine("Invalid input");
+            Console.WriteLine("\nInvalid input");
             ReturningMenu(ReturningMenuText());
             Menu();
             return;
@@ -66,8 +67,16 @@ internal class Program
             Console.WriteLine(file.ReadToEnd());
         }
 
-        Console.WriteLine("'ENTER' press to continue to the menu");
-        if (Console.ReadKey().Key == ConsoleKey.Enter)
+        Console.WriteLine("\n'ENTER' press to continue in the menu or 1 to delete file");
+
+        var resposta = Console.ReadKey().Key;
+
+        if (resposta == ConsoleKey.D1)
+        {
+            DeleteFile(path);
+        }
+        
+        if (resposta == ConsoleKey.Enter)
         {
             ReturningMenu(ReturningMenuText());
             Menu();
@@ -79,8 +88,7 @@ internal class Program
         Console.Clear();
 
         Console.WriteLine("     Enter your text below");
-        Console.WriteLine("----------------------------------");
-        Console.WriteLine(" ");
+        Console.WriteLine("----------------------------------\n");
 
         var text = "";
 
@@ -91,40 +99,48 @@ internal class Program
             text += Environment.NewLine;
         }
         while (Console.ReadKey(true).Key != ConsoleKey.Escape);
-        Console.WriteLine("-------------------------------------------");
-        Console.WriteLine(" ");
+        Console.WriteLine("-------------------------------------------\n");
 
-        Console.WriteLine("Your new text file:");
+        Console.WriteLine("Your new text file:\n");
         Console.WriteLine(text);
-
-        Console.WriteLine(" ");
 
         Saved(text);
 
+    }
+
+    static void DeleteFile(string file)
+    {
+        if (File.Exists(file))
+        {
+            File.Delete(file);
+            Console.WriteLine("\nSuccessfully deleted file\n");
+            Thread.Sleep(2000);
+        }
+
+        else Console.WriteLine("Null");
     }
 
     static void Saved(string text)
     {
         Console.WriteLine("do you Which way salve?");
         var path = Console.ReadLine();
-      
-        if (string.IsNullOrEmpty(path)) 
+
+        if (string.IsNullOrEmpty(path))
         {
             Console.WriteLine("Invalid input");
             ReturningMenu(ReturningMenuText());
             return;
         }
-            using (var file = new StreamWriter(path))
-            {
-                file.WriteLine(text);
-                Console.WriteLine(" ");
-                Console.WriteLine("Successfully saved file...");
-                Thread.Sleep(1500);
-            }
+        using (var file = new StreamWriter(path))
+        {
+            file.WriteLine(text);
+            Console.WriteLine("\nSuccessfully saved file...");
+            Thread.Sleep(1500);
+        }
 
-            ReturningMenu(ReturningMenuText());
-      
-        
+        ReturningMenu(ReturningMenuText());
+
+
     }
 
     static void ReturningMenu(string text)
