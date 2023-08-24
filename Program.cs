@@ -76,10 +76,9 @@ internal class Program
             DeleteFile(path);
         }
         
-        if (resposta == ConsoleKey.Enter)
+        if (resposta == ConsoleKey.Enter || resposta == ConsoleKey.D1)
         {
             ReturningMenu(ReturningMenuText());
-            Menu();
         }
     }
 
